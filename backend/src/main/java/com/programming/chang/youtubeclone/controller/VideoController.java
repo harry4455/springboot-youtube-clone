@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/videos")
+@RequestMapping(value = "/api/videos", method = RequestMethod.POST)
 @RequiredArgsConstructor
 public class VideoController {
 
@@ -15,7 +15,7 @@ public class VideoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void uploadVideo(@RequestParam("file")MultipartFile file){
+    public void uploadVideo(@RequestParam("file") MultipartFile file){
         videoService.uploadVideo(file);
     }
 }
